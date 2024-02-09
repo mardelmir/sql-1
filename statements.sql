@@ -40,10 +40,18 @@ WHERE lenguaje = 'Java';
 SELECT * FROM usuarios_lenguajes
 WHERE lenguaje IS NULL;
 
+-- Corrección
+SELECT * FROM usuarios_lenguajes
+WHERE lenguaje = '';
+
 
 -- Ejercicio 10: Encontrar el nombre y edad del usuario más joven.
 SELECT nombre, edad FROM usuarios_lenguajes
 WHERE edad IN(SELECT MIN(edad) FROM usuarios_lenguajes);
+
+-- Corrección 
+SELECT nombre, edad FROM usuarios_lenguajes
+WHERE edad = (SELECT MIN(edad) FROM usuarios_lenguajes);
 
 -- La solución de arriba es la que comentó Data por Slack, pero la que yo hubiera dado originalmente es esta:
 /*SELECT nombre, edad FROM usuarios_lenguajes
